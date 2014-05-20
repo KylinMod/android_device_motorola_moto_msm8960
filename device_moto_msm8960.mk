@@ -25,6 +25,10 @@ PRODUCT_LOCALES := en_US
 PRODUCT_LOCALES += hdpi xhdpi
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml
+
 # Audio
 PRODUCT_PACKAGES += \
     audio_policy.msm8960 \
@@ -80,6 +84,10 @@ PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     init.qcom.sh
 
+# Ramdisk overrides
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.usb.rc:root/init.qcom.usb.rc
+
 # TWRP
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/twrp.fstab:recovery/root/etc/twrp.fstab
@@ -87,7 +95,8 @@ PRODUCT_COPY_FILES += \
 # Audio configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/config/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
+    $(LOCAL_PATH)/config/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
+    $(LOCAL_PATH)/config/snd_soc_msm_2x_xt92x:system/etc/snd_soc_msm/snd_soc_msm_2x_xt92x
 
 # Media config
 PRODUCT_COPY_FILES += \
